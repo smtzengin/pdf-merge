@@ -1,0 +1,88 @@
+<div class="component-container page-transition" #pageContainer>
+  <div class="container">
+    <header>
+      <h1>PDF Merger</h1>
+      <p class="subtitle">Merge multiple PDF files into one</p>
+    </header>
+    
+    <div class="upload-section" [class.dragging]="isDragging">
+      <input 
+        #fileInput
+        type="file" 
+        multiple
+        accept=".pdf,application/pdf"
+        (change)="onFileSelect($event)"
+        [disabled]="isLoading"
+        hidden
+      >
+      
+      <div 
+        class="drop-zone"
+        (dragover)="onDragOver($event)"
+        (dragleave)="onDragLeave($event)"
+        (drop)="onFileDrop($event)"
+      >
+        <div class="upload-icon">
+          <i class="fas fa-file-pdf"></i>
+        </div>
+        <h3>Drag & Drop PDF Files Here</h3>
+        <p>or</p>
+        <button type="button" class="select-button" (click)="fileInput.click()">
+          Select Files
+        </button>
+        <p class="file-limits">
+          Select 2-10 PDF files (max 10MB each)
+        </p>
+      </div>
+  
+      @if (selectedFiles.length > 0) {
+        <div class="selected-files">
+          <h3>Selected Files ({{selectedFiles.length}}/{{MAX_FILES}})</h3>
+          <p class="drag-hint">Drag files to reorder them</p>
+          
+          <div cdkDropList (cdkDropListDropped)="onDrop($event)">
+            @for (file of selectedFiles; track file.name) {
+              <div class="file-item" cdkDrag>
+                <div class="drag-handle">
+                  <i class="fas fa-grip-lines"></i>
+                </div>
+                <div class="file-info">
+                  <span class="file-name">{{ file.name }}</span>
+                  <span class="file-size">{{ (file.size / (1024 * 1024)).toFixed(2) }} MB</span>
+                </div>
+                <button 
+                  class="remove-button" 
+                  (click)="removeFile(file)"
+                  [disabled]="isLoading"
+                >
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            }
+          </div>
+        </div>
+      }
+  
+      @if (error) {
+        <div class="error-message">
+          <i class="fas fa-exclamation-circle"></i>
+          {{ error }}
+        </div>
+      }
+  
+      <button 
+        class="merge-button"
+        (click)="mergePdfs()" 
+        [disabled]="selectedFiles.length < MIN_FILES || selectedFiles.length > MAX_FILES || isLoading"
+      >
+        @if (isLoading) {
+          <div class="spinner"></div>
+          <span>Merging PDFs...</span>
+        } @else {
+          <i class="fas fa-object-group"></i>
+          <span>Merge {{ selectedFiles.length }} PDFs</span>
+        }
+      </button>
+    </div>
+  </div>
+</div>

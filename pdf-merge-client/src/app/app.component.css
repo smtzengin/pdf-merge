@@ -1,0 +1,227 @@
+/* Google Fonts import */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600&family=Righteous&display=swap');
+
+:host {
+  display: block;
+  min-height: 100vh;
+  background-color: #f0f4ff;  /* Daha yumuşak bir arka plan */
+  font-family: 'Fredoka', sans-serif;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+h1 {
+  font-family: 'Righteous', cursive;
+  color: #4361ee;
+  font-size: 3rem;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.subtitle {
+  color: #7b8ab8;
+  margin-top: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 300;
+}
+
+.upload-section {
+  background: white;
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 20px rgba(67, 97, 238, 0.1);
+  padding: 2rem;
+}
+
+.drop-zone {
+  border: 3px dashed #b4c0ff;
+  border-radius: 1rem;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.dragging .drop-zone {
+  border-color: #4361ee;
+  background-color: #f0f4ff;
+  transform: scale(1.02);
+}
+
+.upload-icon {
+  font-size: 3.5rem;
+  color: #4361ee;
+  margin-bottom: 1rem;
+}
+
+.select-button {
+  background-color: #4361ee;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 1rem;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 500;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.select-button:hover {
+  background-color: #3451db;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(67, 97, 238, 0.2);
+}
+
+.file-limits {
+  color: #7b8ab8;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}
+
+.selected-files {
+  margin-top: 2rem;
+}
+
+.drag-hint {
+  color: #7b8ab8;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.file-item {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  background: #f8faff;
+  border-radius: 1rem;
+  margin-bottom: 0.5rem;
+  cursor: move;
+  transition: all 0.2s ease;
+}
+
+.file-item:hover {
+  background: #f0f4ff;
+  transform: translateX(5px);
+}
+
+.drag-handle {
+  color: #b4c0ff;
+  margin-right: 1rem;
+  cursor: grab;
+}
+
+.file-info {
+  flex: 1;
+}
+
+.file-name {
+  display: block;
+  color: #4361ee;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.file-size {
+  color: #7b8ab8;
+  font-size: 0.9rem;
+}
+
+.remove-button {
+  background: none;
+  border: none;
+  color: #ff4d4d;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.remove-button:hover {
+  background-color: #fff0f0;
+  transform: scale(1.1);
+}
+
+.error-message {
+  display: flex;
+  align-items: center;
+  background-color: #ffe5e5;
+  color: #ff4d4d;
+  padding: 1rem;
+  border-radius: 1rem;
+  margin: 1rem 0;
+  font-weight: 500;
+}
+
+.error-message i {
+  margin-right: 0.5rem;
+}
+
+.merge-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: #4361ee;
+  color: white;
+  border: none;
+  padding: 1.2rem;
+  border-radius: 1rem;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-top: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.merge-button:hover:not(:disabled) {
+  background-color: #3451db;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(67, 97, 238, 0.2);
+}
+
+.merge-button:disabled {
+  background-color: #b4c0ff;
+  cursor: not-allowed;
+}
+
+.merge-button i {
+  margin-right: 0.5rem;
+  font-size: 1.3rem;
+}
+
+.spinner {
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 3px solid #ffffff;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-right: 0.5rem;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.cdk-drag-preview {
+  box-shadow: 0 8px 20px rgba(67, 97, 238, 0.15);
+}
+
+.cdk-drag-placeholder {
+  opacity: 0.3;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}

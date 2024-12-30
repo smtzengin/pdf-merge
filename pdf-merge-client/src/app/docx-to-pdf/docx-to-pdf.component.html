@@ -1,0 +1,69 @@
+<div class="component-container page-transition" #pageContainer>
+  <div class="container">
+    <header>
+      <h1>DOCX to PDF Converter</h1>
+      <p class="subtitle">Convert Word documents to PDF format</p>
+    </header>
+    
+    <div class="upload-section" [class.dragging]="isDragging">
+      <input 
+        #fileInput
+        type="file"
+        accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        (change)="onFileSelect($event)"
+        [disabled]="isLoading"
+        hidden
+      >
+      
+      <div 
+        class="drop-zone"
+        (dragover)="onDragOver($event)"
+        (dragleave)="onDragLeave($event)"
+        (drop)="onFileDrop($event)"
+      >
+        <div class="upload-icon">
+          <i class="fas fa-file-word"></i>
+        </div>
+        <h3>Drag & Drop DOCX File Here</h3>
+        <p>or</p>
+        <button type="button" class="select-button" (click)="fileInput.click()">
+          Select File
+        </button>
+        <p class="file-limits">Maximum file size: 10MB</p>
+      </div>
+  
+      @if (selectedFile) {
+        <div class="selected-file">
+          <div class="file-info">
+            <span class="file-name">{{ selectedFile.name }}</span>
+            <span class="file-size">{{ (selectedFile.size / (1024 * 1024)).toFixed(2) }} MB</span>
+          </div>
+          <button class="remove-button" (click)="removeFile()">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      }
+  
+      @if (error) {
+        <div class="error-message">
+          <i class="fas fa-exclamation-circle"></i>
+          {{ error }}
+        </div>
+      }
+  
+      <button 
+        class="convert-button"
+        (click)="convertToPdf()" 
+        [disabled]="!selectedFile || isLoading"
+      >
+        @if (isLoading) {
+          <div class="spinner"></div>
+          <span>Converting...</span>
+        } @else {
+          <i class="fas fa-file-pdf"></i>
+          <span>Convert to PDF</span>
+        }
+      </button>
+    </div>
+  </div>
+</div>

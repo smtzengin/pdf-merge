@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600&family=Righteous&display=swap');
+
+:host {
+  display: block;
+  min-height: 100vh;
+  background-color: #f0f4ff;
+  font-family: 'Fredoka', sans-serif;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+h1 {
+  font-family: 'Righteous', cursive;
+  color: #4361ee;
+  font-size: 3rem;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.subtitle {
+  color: #7b8ab8;
+  margin-top: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 300;
+}
+
+.upload-section {
+  background: white;
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 20px rgba(67, 97, 238, 0.1);
+  padding: 2rem;
+  transition: all 0.3s ease;
+}
+
+.upload-section.dragging {
+  background: #f8faff;
+  border: 2px dashed #4361ee;
+}
+
+.drop-zone {
+  text-align: center;
+  padding: 2rem;
+  border: 2px dashed #e1e8ff;
+  border-radius: 1rem;
+  transition: all 0.3s ease;
+}
+
+.upload-icon {
+  font-size: 3rem;
+  color: #4361ee;
+  margin-bottom: 1rem;
+}
+
+.select-button {
+  background: #4361ee;
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Fredoka', sans-serif;
+  margin: 1rem 0;
+}
+
+.select-button:hover {
+  background: #3451db;
+  transform: translateY(-2px);
+}
+
+.file-limits {
+  color: #7b8ab8;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}
+
+.selected-file {
+  margin-top: 1.5rem;
+  background: #f8faff;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.file-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.file-name {
+  color: #2d3748;
+  font-weight: 500;
+}
+
+.file-size {
+  color: #7b8ab8;
+  font-size: 0.9rem;
+}
+
+.remove-button {
+  background: none;
+  border: none;
+  color: #ef4444;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  transition: all 0.3s ease;
+}
+
+.remove-button:hover {
+  background: #fee2e2;
+}
+
+.error-message {
+  background: #fee2e2;
+  color: #ef4444;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.convert-button {
+  width: 100%;
+  background: #4361ee;
+  color: white;
+  border: none;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Fredoka', sans-serif;
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.convert-button:hover:not(:disabled) {
+  background: #3451db;
+  transform: translateY(-2px);
+}
+
+.convert-button:disabled {
+  background: #b4c0ff;
+  cursor: not-allowed;
+}
+
+.spinner {
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 3px solid #ffffff;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
